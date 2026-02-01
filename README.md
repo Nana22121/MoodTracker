@@ -2,18 +2,18 @@
 
 git clone git@github.com:Nana22121/MoodTracker.git
 
-cd Habits
+cd Mood
 
-Создайте и активируйте виртуальное окружение:
+2. Создайте и активируйте виртуальное окружение:
 
 python -m venv venv
 
 .\venv\Scripts\activate
 
-Установите зависимости: pip install -r requirements.txt
+3. Установите зависимости: pip install -r requirements.txt
 
-Запустить проект: python app.py
+4. Запустить проект: python app.py
 
-Перейдите по ссылке http://127.0.0.1:5000 в терминале с помощью Ctrl + клик
+5. Перейдите по ссылке http://127.0.0.1:5000 в терминале с помощью Ctrl + клик
 
 для проверки статистики: http://127.0.0.1:5000/api/stats
