@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mood Tracker</title></head>
+<body>
+    <h1>Трекер настроения</h1>
+    <form id="moodForm">
+        <input style = "width: 15%" type="number" id="score" placeholder="Настроение (0-10)" min="0" max="10" required>
+        <input type="text" id="tags" placeholder="Теги (через запятую)">
+        <input type="text" id="note" placeholder="Заметки">
+        <button type="submit">Сохранить</button>
+    </form>
+    
+    <hr>
+    <h2>История</h2>
+    <ul>
+        {% for entry in entries %}
+        <li><strong>{{ entry.date.strftime('%d.%m.%Y %H:%M') }}</strong>: {{ entry.mood_score }}/10 — <i>{{ entry.tags }} ( {{ entry.note }})</i></li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        document.getElementById('moodForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('/api/mood', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    mood_score: parseInt(document.getElementById('score').value),
+                    tags: document.getElementById('tags').value.split(','),
+                    note: document.getElementById('note').value
+                })
+            });
+            const data = await res.json();
+            if (data.alert) alert(data.alert);
+            location.reload();
+        };
+    </script>
+</body>
+</html>

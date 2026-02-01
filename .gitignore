@@ -1,0 +1,14 @@
+venv/
+.venv/
+env/
+
+*.db
+
+# Временные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Настройки VS Code / PyCharm
+.vscode/
+.idea/
